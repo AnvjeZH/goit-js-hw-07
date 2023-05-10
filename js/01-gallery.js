@@ -18,4 +18,34 @@ return `
 
 listRef.insertAdjacentHTML('beforeend', markup)
 
-console.log(galleryItems);
+listRef.addEventListener('click', onClickImageHandler)
+
+function onClickImageHandler(event) {
+
+event.preventDefault()
+blockStandartAction(event)
+
+if(event.target.nodeName !== 'IMG') {
+return
+}
+
+
+const instance = basicLightbox.create(`
+    <img src="event.target.dataset.source" width="800" height="600">
+`)
+
+instance.show()
+
+}
+
+
+
+listRef.addEventListener('keydown', onCloseEscImage);
+
+function onCloseEscImage (event) {
+
+if (event.target.code === 'ESC') {
+instance.close()
+}
+window.removeEventListener('keydown', onCloseEscImage)
+}

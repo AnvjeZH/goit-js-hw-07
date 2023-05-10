@@ -23,7 +23,7 @@ listRef.addEventListener('click', onClickImageHandler)
 function onClickImageHandler(event) {
 
 event.preventDefault()
-blockStandartAction(event)
+
 
 if(event.target.nodeName !== 'IMG') {
 return

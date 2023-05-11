@@ -16,33 +16,24 @@ return `
 `
 }).join('')
 
-listRef.insertAdjacentHTML('beforeend', markup)
+listRef.insertAdjacentHTML('beforeend', markup);
 
-listRef.addEventListener('click', onClickImageHandler)
+listRef.addEventListener('click', onClickImageHandler);
 
 function onClickImageHandler(event) {
 
-event.preventDefault()
+event.preventDefault();
 
 if(event.target.nodeName !== 'IMG') {
-return
+return;
 }
 
-
+const originalSizeImage = event.target.getAttribute('data-source');
 const instance = basicLightbox.create(`
-    <img src="event.target.dataset.source" width="800" height="600">
-`)
-instance.show()
+    <img src="${originalSizeImage}" width="800" height="600">
+`);
+
+instance.show();
 }
 
-
-
-listRef.addEventListener('keydown', onCloseEscImage);
-
-function onCloseEscImage (event) {
-
-if (event.target.code === 'ESC') {
-instance.close()
-}
-window.removeEventListener('keydown', onCloseEscImage)
-}
+console.log(galleryItems);
